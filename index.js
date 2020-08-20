@@ -2,9 +2,10 @@
 let keyboardType = 'forty';
 let mode = 'i3';
 
-document.querySelector("button").addEventListener("click)
+let numKeys = document.querySelectorAll("li").length;
 
-function handleClick() {
-	alert('donthurtme');
+for (var i = 0; i<numKeys; i++) {
+  document.querySelectorAll("li")[i].addEventListener("click", () => {
+    alert('donthurtme');
+  });
 }
-
