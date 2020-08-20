@@ -28,3 +28,9 @@ li {
 	padding-left: 100px;
 	padding-right: 100px;
 }
+
+.beenClicked {
+  background-color: blue;
+  color: black;
+  border-color: white;
+}
