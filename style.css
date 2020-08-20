@@ -1,0 +1,30 @@
+
+body {
+	color: black;
+	font-family: monospace;
+	background-color: #FFAA99;
+}
+header {
+	text-align: center;
+}
+#keyboard {
+	text-align: center;
+}
+ol{
+	background-color: transparent;
+	padding: 0;
+}
+li {
+	background-color: black;
+	display: inline-block;
+	list-style-type: none;
+	padding: 20px;
+	border-style: solid;
+	border-color: black;
+	color: pink;
+}
+
+#space {
+	padding-left: 100px;
+	padding-right: 100px;
+}
