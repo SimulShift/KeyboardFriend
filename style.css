@@ -3,6 +3,7 @@ body {
 	color: black;
 	font-family: monospace;
 	background-color: #FFAA99;
+  user-select: none; /* no highlight */
 }
 header {
 	text-align: center;
