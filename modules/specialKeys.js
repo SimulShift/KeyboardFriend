@@ -1,6 +1,7 @@
 define(['jquery'], function($) {
 
-/*
+var specialKeys = {};
+
 specialKeys.dictionary = {
   "`": "backquote",
   ";": "semicolon",
@@ -12,11 +13,6 @@ specialKeys.dictionary = {
   "=": "equal",
   "[": "openBracket",
   "]": "closingBracket"
-}
-*/
-var specialKeys = {};
-specialKeys.echoMang = function() {
-  alert('echomang!');
 }
 
 return specialKeys;
