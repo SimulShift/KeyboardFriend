@@ -1,6 +1,7 @@
+define(['jquery', 'specialKeys'], function($,specialKeys) {
+  $('#space').html('hello, from the other side!')
 
-let keyboardType = 'forty';
-let mode = 'i3';
+  specialKeys.echoMang();
 
 let numKeys = document.querySelectorAll("li").length;
 
@@ -15,16 +16,21 @@ for (var i = 0; i<numKeys; i++) {
       this.setAttribute("class", "beenClicked");
     }
   });
+
   document.addEventListener("keydown", function(event) {
-    console.log(event);
+    //console.log(event);
     let keyString = event.key;
     let keyNum = Number(keyString);
 
-    console.log(keyNum);
-    console.log(typeof keyNum);
+    console.log(keymap[keyString]);
 
-    if (keyNum >= 0 || keynum < 10) {
+    if (keyNum >= 0 || keyNum < 10) {
       keyString = 'digit' + keyString;
+    } else if (keyString in keymap) {
+      keyString = keymap[keyString];
+    }
+    for (var key in keymap) {
+      console.log(key);
     }
     let currentKey = document.querySelector("#" + keyString);
     if (currentKey.classList.contains('beenClicked')) {
@@ -34,3 +40,5 @@ for (var i = 0; i<numKeys; i++) {
     }
   });
 }
+
+});

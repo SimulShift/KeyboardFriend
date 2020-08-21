@@ -14,7 +14,7 @@
   </header>
   <div id="keyboard">
     <ol class="rows" id="row1">
-      <li class="key" id="`">`</li>
+      <li class="key" id="backquote">`</li>
       <li class="key" id="digit1">1</li>
       <li class="key" id="digit2">2</li>
       <li class="key" id="digit3">3</li>
@@ -25,8 +25,8 @@
       <li class="key" id="digit8">8</li>
       <li class="key" id="digit9">9</li>
       <li class="key" id="digit0">0</li>
-      <li class="key" id="-">-</li>
-      <li class="key" id="=">=</li>
+      <li class="key" id="dash">-</li>
+      <li class="key" id="equal">=</li>
       <li class="key" id="backspace">Backspace</li>
     </ol>
     <ol class="rows" id="row2">
@@ -85,7 +85,11 @@
       <li class="key" id="rctrl">Ctrl</li>
     </ol>
   </div>
-  <script src="./modules/jquery-3.5.1.js"></script> 
-  <script src="index.js"></script>
+  <script data-main="modules/config" src="require.js"></script>
+  <script>
+  require(['config'], function() {
+    require(['main']);
+    });
+  </script>
 </body>
 </html>
