@@ -16,9 +16,17 @@ for (var i = 0; i<numKeys; i++) {
     }
   });
   document.addEventListener("keydown", function(event) {
-    let keyChar = event.key;
-    console.log(keyChar + 'uwu');
-    let currentKey = document.querySelector("#" + keyChar);
+    console.log(event);
+    let keyString = event.key;
+    let keyNum = Number(keyString);
+
+    console.log(keyNum);
+    console.log(typeof keyNum);
+
+    if (keyNum >= 0 || keynum < 10) {
+      keyString = 'digit' + keyString;
+    }
+    let currentKey = document.querySelector("#" + keyString);
     if (currentKey.classList.contains('beenClicked')) {
       currentKey.setAttribute("class", "key");
     } else {
