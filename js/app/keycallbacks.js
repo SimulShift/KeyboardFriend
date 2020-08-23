@@ -1,5 +1,6 @@
 define(['jquery', 'specialKeys'], function($,specialKeys) {
 
+
 let numKeys = document.querySelectorAll("li").length;
 
 /* Event Listener that handles clicks 
@@ -14,8 +15,7 @@ for (var i = 0; i<numKeys; i++) {
     }
   });
 }
-
-/*  handles the keyboa
+/*  handles the keyboard
     First it converts digits to string
     Then it converts SpecialCharacters from specialKeys.js
     Finally the main condition can transform the buttons
