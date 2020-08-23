@@ -1,8 +1,4 @@
-define(['jquery'], function($) {
-
-var specialKeys = {};
-
-specialKeys.dictionary = {
+define({
   "`": "backquote",
   ";": "semicolon",
   ",": "comma",
@@ -13,8 +9,4 @@ specialKeys.dictionary = {
   "=": "equal",
   "[": "openBracket",
   "]": "closingBracket"
-}
-
-return specialKeys;
-
 });

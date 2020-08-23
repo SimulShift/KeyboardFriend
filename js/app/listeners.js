@@ -1,11 +1,7 @@
-define(['jquery', 'specialKeys'], function($,specialKeys) {
-
-
+define(['app/static'], function(static) {
 let numKeys = document.querySelectorAll("li").length;
 
-/* Event Listener that handles clicks 
-   it gabs all the li elements and swaps
-    the class *** CALL BACK **** */
+/* ==== MOUSE ========== */
 for (var i = 0; i<numKeys; i++) {
   document.querySelectorAll("li")[i].addEventListener("click",function() {
     if (this.classList.contains('beenClicked')) {
@@ -15,12 +11,8 @@ for (var i = 0; i<numKeys; i++) {
     }
   });
 }
-/*  handles the keyboard
-    First it converts digits to string
-    Then it converts SpecialCharacters from specialKeys.js
-    Finally the main condition can transform the buttons
-    ***CALL BACK WITHIN EVENT LISTENER***
-  */
+
+/* ==== KEYBOARD ========== */
 document.addEventListener("keydown", function(event) {
   console.log(event);
   let keyString = event.key;
@@ -29,8 +21,8 @@ document.addEventListener("keydown", function(event) {
   /* Handles Digits */
   if (keyNum >= 0 || keyNum < 10) {
     keyString = 'digit' + keyString;
-  } else if (keyString in specialKeys.dictionary) {
-    keyString = specialKeys.dictionary[keyString];
+  } else if (keyString in static) {
+    keyString = static[keyString];
   }
 
   /* main condition */
@@ -43,5 +35,4 @@ document.addEventListener("keydown", function(event) {
     console.log("we out here");
   }
 }); //end of event listener
-
-});
+}); // end of define
