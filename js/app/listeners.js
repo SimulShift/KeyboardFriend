@@ -14,9 +14,12 @@ for (var i = 0; i<numKeys; i++) {
 
 /* ==== KEYBOARD ========== */
 document.addEventListener("keydown", function(event) {
-  console.log(event);
   let code = event.code;
+
+	/* debug 
+  console.log(event);
 	console.log(code);
+	*/
 
   /* Conversion */
   let keyObject = document.querySelector('.' + code);

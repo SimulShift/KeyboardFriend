@@ -1,4 +1,4 @@
 #!/bin/bash
 export PROJECTROOT="~/Projects/KeyboardFriend"
 
-vim
+vim $(find ~/Projects/KeyboardFriend/js/app | fzf -m)
