@@ -1,9 +1,10 @@
 /* File Structure
-KeyboardFriend/js/(lib/app) */
-requirejs.config({ // baseUrl='js'
+KeyboardFriend/js/(lib/app)
+*/
+requirejs.config({ 
+	baseUrl: "js/lib",
 	paths: {
-		//"lib": "lib", // third party
-		//"app": "app"  // original code
+		app: '../app'
 	}
 });
 

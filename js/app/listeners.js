@@ -15,24 +15,15 @@ for (var i = 0; i<numKeys; i++) {
 /* ==== KEYBOARD ========== */
 document.addEventListener("keydown", function(event) {
   console.log(event);
-  let keyString = event.key;
-  let keyNum = Number(keyString);
+  let code = event.code;
+	console.log(code);
 
-  /* Handles Digits */
-  if (keyNum >= 0 || keyNum < 10) {
-    keyString = 'digit' + keyString;
-  } else if (keyString in static) {
-    keyString = static[keyString];
-  }
-
-  /* main condition */
-  console.log(keyString);
-  let currentKey = document.querySelector('.' + keyString);
-  if (currentKey.classList.contains('beenClicked')) {
-    currentKey.setAttribute("class", "key " + keyString);
+  /* Conversion */
+  let keyObject = document.querySelector('.' + code);
+  if (keyObject.classList.contains('beenClicked')) {
+    keyObject.setAttribute("class", "key " + code);
   } else {
-    currentKey.setAttribute("class", "key "+ keyString + " beenClicked");
-    console.log("we out here");
+    keyObject.setAttribute("class", "key "+ code + " beenClicked");
   }
-}); //end of event listener
-}); // end of define
+});
+}); 
