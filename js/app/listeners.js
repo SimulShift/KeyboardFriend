@@ -16,10 +16,10 @@ for (var i = 0; i<numKeys; i++) {
 document.addEventListener("keydown", function(event) {
   let code = event.code;
 
-	/* debug 
+	///* debug 
   console.log(event);
 	console.log(code);
-	*/
+	//*/
 
   /* Conversion */
   let keyObject = document.querySelector('.' + code);

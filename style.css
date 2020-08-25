@@ -11,6 +11,11 @@ header {
 #keyboard {
 	text-align: center;
 }
+
+.key:hover {
+  border-color: pink;
+}
+
 ol{
 	background-color: transparent;
 	padding: 0;
@@ -29,7 +34,11 @@ li {
 	padding-left: 100px;
 	padding-right: 100px;
 }
-
+.i3 {
+  background-color: orange;
+  border-color: black;
+  color: black;
+}
 .beenClicked {
   background-color: lightblue;
   color: black;
