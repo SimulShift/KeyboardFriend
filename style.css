@@ -16,6 +16,11 @@ header {
   border-color: pink;
 }
 
+.mod {
+  background-color: #00FFFF;
+  color: white;
+}
+
 ol{
 	background-color: transparent;
 	padding: 0;
@@ -30,7 +35,7 @@ li {
 	color: pink;
 }
 
-#space {
+.Space {
 	padding-left: 100px;
 	padding-right: 100px;
 }
@@ -43,4 +48,16 @@ li {
   background-color: lightblue;
   color: black;
   border-color: white;
+}
+
+.tooltip {
+  opacity: 0;
+  position: fixed;
+  top:0;
+  left:0;
+  background: #444;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 20px;
+  z-index: 99999;
 }

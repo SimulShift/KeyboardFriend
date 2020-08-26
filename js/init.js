@@ -9,5 +9,5 @@ requirejs.config({
 });
 
 /* Loading components */ 
-requirejs(['app/listeners']);
-requirejs(['app/ConfigReader']);
+requirejs(['app/keyListeners']);
+requirejs(['app/parserInit']);

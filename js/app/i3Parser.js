@@ -1,28 +1,7 @@
-define('app/static', function(static) {
+define(function(static) {
+	return function (text) {
 
-const configs = document.querySelector('.config');
-configs.addEventListener('change', function(){
-	if (this.files.length === 0 ) {
-		console.log('No file selected');
-		return;
-	}
-	console.log(this.files);
-	const reader = new FileReader();
-	if (this.files[0].name == 'config') {
-		reader.onload = function(e) {
-			parsei3(e.target.result);
-		}
-		reader.readAsText(this.files[0]);
-	} else if (files.name==='.vimrc') {
-			parsevimrc();
-	} else {
-		console.log('incorrect file');
-	}
-});
-
-function parsei3(text) {
-
-	//console.log(text);
+	console.log(text);
 	let i3key = "";
 	let bindLines = [];
 	let keybinds = [];
@@ -66,7 +45,9 @@ function parsei3(text) {
 	}
 	//console.log(keys);
 	highlight(keys);
-} // end of parsei3 function
+} 
+
+/* ==== end of parsei3 function ======= */
 
 function highlight(keys) {
 	for (key of keys) {
@@ -81,8 +62,5 @@ function highlight(keys) {
     keyObject.setAttribute("class",key + " i3");
 	}
 }
-
-function parsevimrc() {
-}
-
+//TODO tooltip.initializeTooltip();
 });
