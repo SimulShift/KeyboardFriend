@@ -1,15 +1,16 @@
-define(function(cread) {
+define(function() {
+console.log('is work?');
 
 let initializeTooltip = function() {
 	let tooltip = "";
-	let tooltipDiv = document.querySelector(".tooltip");
+	let tooltipDiv = document.querySelector('.tooltip');
 	let tooltipElements = document.querySelectorAll(".key");
 	let displayTooltip = function(e, obj) {
 		tooltip= obj.dataset.tooltip;
 		tooltipDiv.innerHTML = tooltip;
 		tooltipDiv.style.top = e.pageY + "px";
 		tooltipDiv.style.left = e.pageX + "px";
-		toolTipDiv.style.opacity = 1;
+		tooltipDiv.style.opacity = 1;
 	}
 	tooltipElements.forEach(function(elem) {
 		elem.addEventListener("mouseenter", function(e) {
@@ -17,5 +18,5 @@ let initializeTooltip = function() {
 		});
 	});
 }
-	
+initializeTooltip();	
 });

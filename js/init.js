@@ -1,5 +1,4 @@
 /* File Structure
-KeyboardFriend/js/(lib/app)
 */
 requirejs.config({ 
 	baseUrl: "js/lib",
@@ -11,3 +10,4 @@ requirejs.config({
 /* Loading components */ 
 requirejs(['app/keyListeners']);
 requirejs(['app/parserInit']);
+requirejs(['app/tooltip']);

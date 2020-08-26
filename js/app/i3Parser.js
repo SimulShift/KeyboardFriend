@@ -1,8 +1,10 @@
-define(function(static) {
-	return function (text) {
+define(function() {
 
-	console.log(text);
-	let i3key = "";
+let i3key = "";
+
+return function (text) {
+
+	//console.log(text);
 	let bindLines = [];
 	let keybinds = [];
 	let descriptions = [];
@@ -33,21 +35,25 @@ define(function(static) {
 					keys.push(temp.charAt(i));
 				}
 				parsed += temp.charAt(i);
-			} // end of inner for loop
+			} 
 			//keybinds.push(parsed);
-		} // end of if statements
-	} // end of main loop
-	console.log('i3key: ' + i3key);
-	if (i3key === '1') {
-		let modkey = document.querySelector('.AltLeft');
-		let currentAttributes = modkey.classList;
-		modkey.setAttribute('class', currentAttributes + ' i3'); 
-	}
+		}
+	} 
+	highlightMod();
 	//console.log(keys);
 	highlight(keys);
 } 
 
 /* ==== end of parsei3 function ======= */
+function highlightMod() {
+console.log('i3key: ' + i3key);
+	if (i3key === '1') {
+		let modkey = document.querySelector('.AltLeft');
+		let currentAttributes = modkey.classList;
+		modkey.setAttribute('class', currentAttributes + ' mod'); 
+	}
+}
+
 
 function highlight(keys) {
 	for (key of keys) {
