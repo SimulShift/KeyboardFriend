@@ -7,7 +7,6 @@ requirejs.config({
 	}
 });
 
-/* Loading components */ 
+/* Load initial components */ 
 requirejs(['app/keyListeners']);
 requirejs(['app/parserInit']);
-requirejs(['app/tooltip']);

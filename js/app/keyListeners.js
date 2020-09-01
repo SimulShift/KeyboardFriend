@@ -1,4 +1,4 @@
-define(function(static) {
+define(function() {
 let numKeys = document.querySelectorAll("li").length;
 
 /* ==== MOUSE ========== */

@@ -10,12 +10,11 @@ configs.addEventListener('change', function(){
 	const reader = new FileReader();
 	if (this.files[0].name == 'config') {
 		reader.onload = function(e) {
-			console.log('before i3prser');
 			i3parser(e.target.result);
 		}
 		reader.readAsText(this.files[0]);
 	} else if (files.name==='.vimrc') {
-			//parsevimrc();
+			//TODO parsevimrc();
 	} else {
 		console.log('incorrect file');
 	}

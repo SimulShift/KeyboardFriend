@@ -1,72 +1,75 @@
-define(function() {
+define(["app/i3highlight","app/tooltips"], function(Highlight,Tooltips) {
 
-let i3key = "";
+//=======================
+//     bool findi3key
+//=======================
+function findi3key(line) {
+	if (line.includes('set $Mod') ||
+	line.includes('set $mod')) {
+		for (let i = 0; i<line.length; i++) {
+			if ('Mod' === line.substring(i-3,i)) {
+				i3key = line.charAt(i);
+			}
+		}
+		return true;
+	} else return false;
+}
+//=======================
+//    bool hasModifier
+//=======================
+function hasModifier(current, i) {
+	if (current.includes('Shift')  ||
+				current.includes('shift')   ||
+				current.includes('control') ||
+				current.includes('Control')) {
+		return true;
+	} else return false;
+}
+
+let i3key        = "";
+let bindlines    = [];
+let descriptions = [];
+let keys         = [];
 
 return function (text) {
-
 	//console.log(text);
-	let bindLines = [];
-	let keybinds = [];
-	let descriptions = [];
-	let keys = [];
-
 	let lines = text.split('\n');
-	/* looping through all the lines */
+	
+	/* Main Loop */
 	for (let line of lines) {
-		if (line.includes('set $Mod') ||
-			line.includes('set $mod')){
-				for (let i = 0; i<line.length;i++) {
-					if ('Mod' === line.substring(i-3,i)) {
-						i3key = line.charAt(i);
-					}
-				}
-			} else if (line.substring(0, 4) != 'bind') {
+
+		/* first check for i3key */
+		if (findi3key(line)) {
+			console.log("found i3key");
+
+		/* if not bindline then we keep looping */
+		} else if (line.substring(0, 4) != 'bind') {
 			continue;
+		/* if this far then bindline found
+		and we can begin parsing the line */
 		} else {
-			bindLines.push(line);
-			let temp = line.substring(8);
-			let parsed = "";
-			for (let i = 0; i<temp.length; i++) {
-				if (temp.charAt(i) === " ") {
-					break;
-				} else if (i > 0 && temp.charAt(i-1) === '+' &&
-				!(temp.includes('Shift') || temp.includes('control' ||
-				temp.inclues('shift') || temp.inclues('Control')))) {
-					keys.push(temp.charAt(i));
+			bindlines.push(line);
+			/* substring() truncates first 
+			8 characters TODO '$sup'
+			we truncate bindsym or bindcode */
+			let current = line.substring(8);
+			// TODO add current to descriptions here
+			for (let i = 0; i<current.length; i++) {
+				if (current.charAt(i) === " " || i == 0 ) {
+					continue;
+					/* check for other modifiers eg, shift, ctrl 
+						TODO add support for shift or ctrl keybinds */
+				} else if (current.charAt(i-1) === '+' && !hasModifier(current, i)) {
+					keys.push(current.charAt(i));
 				}
-				parsed += temp.charAt(i);
 			} 
-			//keybinds.push(parsed);
 		}
 	} 
-	highlightMod();
-	//console.log(keys);
-	highlight(keys);
-} 
+	/* highlighting */
+	Tooltips.populate(descriptions);
 
-/* ==== end of parsei3 function ======= */
-function highlightMod() {
-console.log('i3key: ' + i3key);
-	if (i3key === '1') {
-		let modkey = document.querySelector('.AltLeft');
-		let currentAttributes = modkey.classList;
-		modkey.setAttribute('class', currentAttributes + ' mod'); 
-	}
+	/* highlighting */
+	Highlight.main(keys);
+	Highlight.mod(i3key);
 }
-
-
-function highlight(keys) {
-	for (key of keys) {
-		key = key.toUpperCase();
-		if (Number(key) >= 0 && Number(key) < 11) {
-			key = 'Digit' + key;
-		} else {
-			key = 'Key' + key;
-		}
-		//console.log('key: ' + key);
-		let keyObject = document.querySelector("." + key);
-    keyObject.setAttribute("class",key + " i3");
-	}
-}
-//TODO tooltip.initializeTooltip();
 });
