@@ -21,7 +21,7 @@ return {
 			}
 			//console.log('key: ' + key);
 			let keyObject = document.querySelector("." + key);
-			keyObject.setAttribute("class",key + " i3");
+			keyObject.setAttribute("class", key + " i3");
 		}
 	}
 

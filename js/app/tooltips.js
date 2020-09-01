@@ -20,7 +20,8 @@ let initializeTooltip = function() {
 initializeTooltip();	
 
 return {
-	populate: function(descriptions){
+	populate: function(current, key){
+		$("."+key).attr("data-tooltip", current);
 	}
 }
 

@@ -25,6 +25,18 @@ function hasModifier(current, i) {
 		return true;
 	} else return false;
 }
+//=======================
+// bool map to key class
+//=======================
+function mapToClass(key) {
+	key = key.toUpperCase();
+	if (Number(key) >= 0 && Number(key) < 11) {
+		key = 'Digit' + key;
+	} else {
+		key = 'Key' + key;
+	}
+	return key;
+}
 
 let i3key        = "";
 let bindlines    = [];
@@ -53,21 +65,19 @@ return function (text) {
 			8 characters TODO '$sup'
 			we truncate bindsym or bindcode */
 			let current = line.substring(8);
-			// TODO add current to descriptions here
 			for (let i = 0; i<current.length; i++) {
-				if (current.charAt(i) === " " || i == 0 ) {
+				let curkey = current.charAt(i);
+				if (curkey === " " || i == 0 ) {
 					continue;
 					/* check for other modifiers eg, shift, ctrl 
 						TODO add support for shift or ctrl keybinds */
 				} else if (current.charAt(i-1) === '+' && !hasModifier(current, i)) {
-					keys.push(current.charAt(i));
+					keys.push(curkey);
+					Tooltips.populate(current, mapToClass(curkey));
 				}
 			} 
 		}
 	} 
-	/* highlighting */
-	Tooltips.populate(descriptions);
-
 	/* highlighting */
 	Highlight.main(keys);
 	Highlight.mod(i3key);
