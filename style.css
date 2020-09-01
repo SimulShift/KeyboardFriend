@@ -52,6 +52,7 @@ li {
 
 .tooltip {
   opacity: 0;
+  font-size: x-large;
   position: fixed;
   top:0;
   left:0;

@@ -1,6 +1,5 @@
 # KeyboardFriend
-Help remember your keybinds with Keyboard Friend!
+Help remember and organize your keybinds with Keyboard Friend!
 
-disclaimer:
-in pre-alpha release. The only thing that works right now is button highlighting.
+in alpha release. Highlighting and tooltips work
 https://alexberimbolo.github.io/KeyboardFriend/
