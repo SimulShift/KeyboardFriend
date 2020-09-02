@@ -1,4 +1,4 @@
-define(["app/i3highlight","app/tooltips"], function(Highlight,Tooltips) {
+define(["app/i3highlight","app/tooltips","jquery"], function(Highlight,Tooltips, $) {
 
 //=======================
 //     bool findi3key
@@ -17,7 +17,7 @@ function findi3key(line) {
 //=======================
 //    bool hasModifier
 //=======================
-function hasModifier(current, i) {
+function hasModifier(current) {
 	if (current.includes('Shift')  ||
 				current.includes('shift')   ||
 				current.includes('control') ||
@@ -40,7 +40,6 @@ function mapToClass(key) {
 
 let i3key        = "";
 let bindlines    = [];
-let descriptions = [];
 let keys         = [];
 
 return function (text) {
@@ -71,9 +70,11 @@ return function (text) {
 					continue;
 					/* check for other modifiers eg, shift, ctrl 
 						TODO add support for shift or ctrl keybinds */
-				} else if (current.charAt(i-1) === '+' && !hasModifier(current, i)) {
+				} else if (current.charAt(i-1) === '+' && !hasModifier(current)) {
 					keys.push(curkey);
-					Tooltips.populate(current, mapToClass(curkey));
+					Tooltips.populateKeys(current, mapToClass(curkey));
+					// Populates List View
+					$(".listview").append(current + "<br>");
 				}
 			} 
 		}

@@ -50,7 +50,20 @@ li {
   border-color: white;
 }
 
-.tooltip {
+.keybind {
+  opacity: 0;
+  font-size: x-large;
+  position: fixed;
+  top:0;
+  left:0;
+  background: #444;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 20px;
+  z-index: 99999;
+}
+
+.details {
   opacity: 0;
   font-size: x-large;
   position: fixed;

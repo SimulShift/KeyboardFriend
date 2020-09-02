@@ -23,10 +23,11 @@ document.addEventListener("keydown", function(event) {
 
   /* Conversion */
   let keyObject = document.querySelector('.' + code);
-  if (keyObject.classList.contains('beenClicked')) {
-    keyObject.setAttribute("class", "key " + code);
-  } else {
-    keyObject.setAttribute("class", "key "+ code + " beenClicked");
-  }
+	if (!keyObject.classList.contains("i3")) {
+		keyObject.setAttribute("class", "key "+ code + " beenClicked");
+		setTimeout(function () {
+			keyObject.classList.remove("beenClicked");
+		}, 100 );
+	}
 });
 }); 
