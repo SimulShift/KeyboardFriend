@@ -38,45 +38,46 @@ function mapToClass(key) {
 	return key;
 }
 
+//=====================
+//  parseBindLine() {}
+//=====================
+function parseBindLine(line) {
+	let current = line.substring(8); // truncate
+	for (let i = 0; i<current.length; i++) {
+		let curkey = current.charAt(i);
+		if (curkey === " " || i == 0 ) {
+			continue;
+			/* check for other modifiers eg, shift, ctrl */
+		} else if (current.charAt(i-1) === '+' && !hasModifier(current)) {
+			keys.push(curkey);
+			Tooltips.populateKeys(current, mapToClass(curkey));
+			// Populates List View
+			$(".listview").append(current + "<br>");
+		}
+	}
+}
+
+//======================
+// Global Variables
+//======================
 let i3key        = "";
-let bindlines    = [];
 let keys         = [];
 
 return function (text) {
-	//console.log(text);
 	let lines = text.split('\n');
-	
+
 	/* Main Loop */
 	for (let line of lines) {
-
 		/* first check for i3key */
 		if (findi3key(line)) {
-			console.log("found i3key");
-
+			console.log("found i3key: " + i3key);
 		/* if not bindline then we keep looping */
 		} else if (line.substring(0, 4) != 'bind') {
 			continue;
 		/* if this far then bindline found
 		and we can begin parsing the line */
 		} else {
-			bindlines.push(line);
-			/* substring() truncates first 
-			8 characters TODO '$sup'
-			we truncate bindsym or bindcode */
-			let current = line.substring(8);
-			for (let i = 0; i<current.length; i++) {
-				let curkey = current.charAt(i);
-				if (curkey === " " || i == 0 ) {
-					continue;
-					/* check for other modifiers eg, shift, ctrl 
-						TODO add support for shift or ctrl keybinds */
-				} else if (current.charAt(i-1) === '+' && !hasModifier(current)) {
-					keys.push(curkey);
-					Tooltips.populateKeys(current, mapToClass(curkey));
-					// Populates List View
-					$(".listview").append(current + "<br>");
-				}
-			} 
+			parseBindLine(line);
 		}
 	} 
 	/* highlighting */
