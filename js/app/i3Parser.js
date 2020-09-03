@@ -42,7 +42,13 @@ function mapToClass(key) {
 //  parseBindLine() {}
 //=====================
 function parseBindLine(line) {
-	let current = line.substring(8); // truncate
+
+	let current = line.substring(8); // truncate bind keyword
+	let isBindSym = true;
+	let modkey = "";
+	let keybind = "";
+	let details = "";
+
 	for (let i = 0; i<current.length; i++) {
 		let curkey = current.charAt(i);
 		if (curkey === " " || i == 0 ) {
@@ -50,7 +56,11 @@ function parseBindLine(line) {
 			/* check for other modifiers eg, shift, ctrl */
 		} else if (current.charAt(i-1) === '+' && !hasModifier(current)) {
 			keys.push(curkey);
-			Tooltips.populateKeys(current, mapToClass(curkey));
+
+			if (current.charAt())
+			Tooltips.populateKeys(key, mapToClass(curkey));
+			Tooltips.populateDetails(details, mapToClass(curkey));
+
 			// Populates List View
 			$(".listview").append(current + "<br>");
 		}
