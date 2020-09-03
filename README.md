@@ -6,4 +6,4 @@ I made it because I wanted to easily map my i3 keybinds and vim keybinds so that
 
 Currently in alpha release. Highlighting and tooltips work if you upload your i3 config file
 
-https://alexberimbolo.github.io/KeyboardFriend/
+https://alexhappycode.github.io/KeyboardFriend/
